@@ -1,0 +1,202 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    
+    background: #FFF7E6;
+    
+    width:100%;
+    
+}
+nav{
+    width:100%;
+    background-color: #D35400;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: #F5EBDC;
+    font-size:larger;
+    Padding-top:0.5%;
+    padding-bottom: 0.5%;
+    font-weight:900;
+     top:0;
+    bottom: 0;
+    z-index: 1000; 
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    position : sticky;
+
+}
+nav .about{
+    display:flex;
+    gap:20px;
+}
+nav a{
+    text-decoration: none;
+    color:#F5EBDC;
+}
+.cookhub{
+    display:flex;
+    align-items: center;
+    gap:5px;
+}
+
+nav button {
+    background: #F5EBDC;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: #D35400;
+    font-size: 16px;
+}
+
+nav button:hover {
+    background: #E67E22;
+    color: white;
+}
+
+nav button i {
+    margin-right: 5px;
+}
+
+nav img {
+    height: 50px; 
+    border-radius: 50%; 
+}
+
+
+
+
+.logo {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #FFF6F0;
+}
+
+/* nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    padding: 10px;
+    cursor: pointer;
+    background: #D35400;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 5px;
+} */
+
+/* nav ul .active {
+    background: #A84300; 
+}
+
+nav ul li:hover {
+    background: #A84300;
+} */
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background: #FFF7E6; 
+}
+
+.stats {
+    display: flex;
+    gap: 10px;
+}
+
+.stat-card {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.green {
+    background: #e0f7ea;
+}
+
+.orange {
+    background: #ffecb3;
+}
+
+.red {
+    background: #ffccbc;
+}
+
+.recipe-list {
+    margin-top: 20px;
+}
+
+.add-recipe {
+    background: #D35400;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-recipe:hover {
+    background: #A84300;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+.edit {
+    background: #FFF6F0;
+    color: black;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.delete {
+    background: #D35400;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.delete:hover {
+    background: #A84300;
+}
+
+.users {
+    margin-top: 20px;
+}
+
+.user-list {
+    display: flex;
+    gap: 10px;
+}
+
+.user-card {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}

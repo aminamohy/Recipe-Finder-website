@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="Add Reciepe.css"/>
+  <title>Add Recipe</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <nav>
+    <div class="cookhub">
+    
+    <img src="imgs/WhatsApp Image 2025-04-02 at 22.45.22_80c2abde.jpg"/>
+    <h1>CookHub</h1>
+</div>
+    <div class="about">
+    <a href="Home.html">Home</a>
+        <a href="Recipe_List_Page.html">Recipes</a>
+        <a href="Favourite Page.html">Favorits</a>
+        <a href="SearchPage.html">Find recipe</a>
+        <a href="Admin.html">Manage recipes</a>
+    </div>
+    <div class="about">
+    <button><i class="fa-solid fa-user"></i>sign up</button>
+    <button><i class="fa-solid fa-arrow-right"></i> login</button>
+    </div>
+</nav>
+
+  <main>
+    <div class="container">
+        <h2>Add Recipe</h2>
+        <form id="recipe-form" enctype="multipart/form-data">
+            <label for="recipe-name">Recipe Name:</label>
+            <input type="text" id="recipe-name" placeholder="Enter recipe name" required>
+
+            <label for="servings">Number of Servings:</label>
+            <input type="number" id="servings" min="1" placeholder="1-2" required>
+
+            <label for="duration">Cook Duration (minutes):</label>
+            <input type="number" id="duration" min="1" placeholder="30" required>
+
+            <h3>Ingredients</h3>
+            <div id="ingredients-list">
+                <div class="ingredient">
+                    <input type="text" placeholder="Quantity" required>
+                    <select>
+                        <option>gram</option>
+                        <option>oz</option>
+                        <option>cup</option>
+                    </select>
+                    <input type="text" placeholder="Ingredient Name" required>
+                    <button type="button" class="remove-btn"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <button type="button" class="add-btn">+ Add Ingredient</button>
+
+            <h3>Directions</h3>
+            <div id="directions-list">
+                <div class="direction">
+                    <textarea placeholder="Write cooking instructions..." required></textarea>
+                    <button type="button" class="remove-btn"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <button type="button" class="add-btn">+ Add Step</button>
+
+            <h3>Upload Photo</h3>
+            <input type="file" id="recipe-photo" accept="image/*" required>
+
+            <button type="submit" class="submit-btn">Submit Recipe</button>
+        </form>
+    </div>
+  </main>
+</body>
+</html>

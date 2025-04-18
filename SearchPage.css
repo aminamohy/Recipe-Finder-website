@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #FFF7E6;
+    /* margin: 0; */
+    /* padding: 0; */
+    width:100%;
+    
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+nav{
+    margin-bottom:2rem;
+    width:100%;
+    background-color: #D35400;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: #F5EBDC;
+    font-size:larger;
+    Padding-top:0.5%;
+    padding-bottom: 0.5%;
+    font-weight:900;
+     top:0;
+    bottom: 0;
+    z-index: 1000; 
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    position : sticky;
+
+}
+nav .about{
+    display:flex;
+    gap:20px;
+}
+nav a{
+    text-decoration: none;
+    color:#F5EBDC;
+}
+.cookhub{
+    display:flex;
+    align-items: center;
+    gap:5px;
+    color:#F5EBDC;
+}
+.finder{
+    color:#D35400;
+    font-size: 50px;
+}
+nav button {
+    background: #F5EBDC;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: #D35400;
+    font-size: 16px;
+}
+
+nav button:hover {
+    background: #E67E22;
+    color: white;
+}
+
+nav button i {
+    margin-right: 5px;
+}
+
+nav img {
+    height: 50px; 
+    border-radius: 50%; 
+}
+
+
+
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+#Suggest{
+    font-size: 30px;
+    color: #D35400; 
+}
+.search-box input {
+    width: 70%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-box button {
+    background-color: #D35400; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-box button:hover {
+    background-color: #A84300; 
+}
+
+.recipes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+    justify-items: center;
+}
+
+.recipe {
+    background-color: #FFF6F0; 
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 250px; 
+}
+
+.recipe img {
+    width: 100%;
+    border-radius: 10px;
+    height: 150px;
+    object-fit: cover; 
+}
+
+.recipe h3 {
+    margin: 10px 0 5px;
+    color: #D35400; 
+}
+
+.recipe p {
+    margin: 5px 0;
+    color: #666;
+}

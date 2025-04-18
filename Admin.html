@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Admin</title>
+    <link rel="stylesheet" href="Admin.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="cookhub">
+                <img src="imgs/WhatsApp Image 2025-04-02 at 22.45.18_7308d5b7.jpg"> 
+            <h1>CookHub</h1>
+    
+            </div>
+            <div class="about">
+            <a href="Home.html">Home</a>
+            <a href="Recipe_List_Page.html">Recipes</a>
+            <a id="Favorits" href="Favourite Page.html"></a>
+            <a  href="SearchPage.html">Find recipe</a>
+        <a id="manage_recipes" href="Admin.html"></a>
+        </div>
+            <div class="about">
+
+            <button id="logout"><i class="fa-solid fa-arrow-right"></i> LogOut</button>
+        </div>
+        </nav>
+        <main class="content">
+            <h1>Recipe Admin</h1>
+            <div class="stats">
+                <div class="stat-card green">
+                    <h3>Total Recipes</h3>
+                    <p>320</p>
+                </div>
+                <div class="stat-card orange">
+                    <h3>Total Users</h3>
+                    <p>1050</p>
+                </div>
+                <div class="stat-card red">
+                    <h3>Active Users</h3>
+                    <p>210</p>
+                </div>
+            </div>
+            <section class="recipe-list">
+                <h2>Recipe List</h2>
+                <a href="Add Reciepe.html"><button class="add-recipe">Add Recipe</button></a>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Spaghetti Carbonara</td>
+                            <td>Pasta</td>
+                            <td>01/15/2025</td>
+                            <td>
+                                <button class="edit">Edit</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Chocolate Cake</td>
+                            <td>Dessert</td>
+                            <td>01/14/2025</td>
+                            <td>
+                                <button class="edit">Edit</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Caesar Salad</td>
+                            <td>Salad</td>
+                            <td>01/10/2025</td>
+                            <td>
+                                <button class="delete">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Vegetable Stir Fry</td>
+                            <td>Main Course</td>
+                            <td>1/1/2025</td>
+                            <td>
+                                <button class="delete">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="users">
+                <h2>Users</h2>
+                <div class="user-list">
+                    <div class="user-card">
+                        <p><strong>Username:</strong> Esraa Hussien</p>
+                        <p><strong>Role:</strong> Admin</p>
+                    </div>
+                    <div class="user-card">
+                        <p><strong>Username:</strong> Habiba Ibrahem</p>
+                        <p><strong>Role:</strong> Editor</p>
+                    </div>
+                    <div class="user-card">
+                        <p><strong>Username:</strong> Shahd Abdelalem</p>
+                        <p><strong>Role:</strong> Editor</p>
+                    </div>
+                    <div class="user-card">
+                        <p><strong>Username:</strong> Kenzy Hamdy</p>
+                        <p><strong>Role:</strong> Editor</p>
+                    </div>
+                    <div class="user-card">
+                        <p><strong>Username:</strong>Amina mohy</p>
+                        <p><strong>Role:</strong> Editor</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+    let user = localStorage.getItem("user");
+    if(!user)
+{
+  window.location.href ='Login.html';
+}   
+   let userparse = JSON.parse(user);
+   if(userparse.is_admin === "true"){
+      let manage_recipes = document.getElementById("manage_recipes").innerHTML="Manage recipes";
+      
+   }
+   else{
+      window.location.href="Home.html";
+   }
+let logout = document.getElementById("logout");
+   logout.addEventListener('click', ()=>{
+      localStorage.removeItem("user_data");
+      window.location.href="Login.html"
+   })
+  </script>
+</body>
+</html>

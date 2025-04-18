@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Chef's Recipe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="SignUpStyle.css">
+</head>
+<body>
+    <div class="container">
+        <div class="signup-card">
+            <div class="signup-header">
+                <h1>Join Our Community</h1>
+                <p>Create your account to access thousands of recipes</p>
+            </div>
+            
+            <form id="signupform">
+                <div class="form-group">
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input id="UserName" type="text" placeholder="UserName" required>
+                    </div>
+                    
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input id="Email" type="email" placeholder="Email" required>
+                    </div>
+                    
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input id="Password" type="password" placeholder="Password" required>
+                    </div>
+                    
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input id="ConfirmPWD" type="password" placeholder="Confirm Password" required>
+                    </div>
+                    
+                    <div class="input-field">
+                        <i class="fas fa-phone"></i>
+                        <input id="MOBNO" type="tel" placeholder="Mobile Number">
+                    </div>
+                    
+                    <div class="input-field">
+                        <i class="fas fa-calendar"></i>
+                        <input id="Date" type="date" placeholder="Date of Birth">
+                    </div>
+                    
+                    <!-- <select required>
+                        <option value="" disabled selected>Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select> -->
+                    <select id="isadmin" required>
+                        <option value="" disabled selected>Is_admin</option>
+                        <option value="true">true</option>
+                        <option value="false">false</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="signup-button">
+                    <i class="fas fa-utensils" style="margin-right: 8px;"></i> Sign Up
+                </button>
+                
+                <div class="login-link">
+                    <p>Already have an account? <a href="Login.html">Login Now</a></p>
+                </div>
+                
+                <div class="social-signup">
+                    <p>Or sign up with</p>
+                    <div class="social-icons">
+                        <div class="social-icon facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="social-icon google">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <div class="social-icon apple">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <nav>
+            <a href="#">Explore</a>
+            <a href="#">What's New</a>
+            <a href="#">Help & Feedback</a>
+            <a href="#">Contact</a>
+        </nav>
+        <p>© 2025 Chef's Recipe. All rights reserved.</p>
+    </footer>
+    <script>
+        let signupform = document.getElementById("signupform");
+
+        signupform.addEventListener('submit' , (e)=>{
+            e.preventDefault();
+            let username = document.getElementById("UserName").value;
+        let email = document.getElementById("Email").value;
+        let pwd = document.getElementById("Password").value;
+        let ConfirmPWD = document.getElementById("ConfirmPWD").value;
+        let mobno = document.getElementById("MOBNO").value;
+        let date = document.getElementById("Date").value;
+        let is_admin = document.getElementById("isadmin").value;
+            if(pwd != ConfirmPWD){
+                alert("pwd donot match");
+            }
+            else{
+                let user={
+                    email:email,
+                    password:pwd,
+                    is_admin:is_admin,
+                }
+                let userdata = localStorage.setItem("user_data" , JSON.stringify(user));
+                alert("Sign up have been done successfully ");
+                window.location.href="Login.html"
+            }
+        })
+
+    </script>
+</body>
+</html>

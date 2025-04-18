@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="recipe_list.css">
+    
+    <title>Recipe List</title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="cookhub">
+            
+            <img src="imgs/WhatsApp Image 2025-04-02 at 22.45.22_80c2abde.jpg"/>
+            <h1>CookHub</h1>
+        </div>
+            <div class="about">
+            <a href="Home.html">Home</a>
+            
+        <a href="Recipe_List_Page.html">Recipes</a>
+        <a id="Favorits" href="Favourite Page.html"></a>
+        <a href="SearchPage.html">Find recipe</a>
+        <a id="manage_recipes" href="Admin.html"></a>
+            </div>
+            <div class="about">
+
+            <button id="logout"><i class="fa-solid fa-arrow-right"></i> LogOut</button>
+            </div>
+        </nav>
+        <div class="content">
+            <div id="recipeList">
+                <div class="recipe-card" data-name="Shawrma">
+                    
+                    <img src="imgs/shawrma.jpg" alt="">
+                    <h3>Shawarma</h3>
+                    <p>A Surian dish</p>
+                    
+                    <div class="buttons-container">
+                        <button class="favorite-btn"><i class="fa fa-heart"></i></button>
+                        <button class="recipe-details"> <a href="Recipe_details_Page.html">view details</a> </button>
+                    </div>
+                </div>
+                <div class="recipe-card" data-name="spagetti">
+                    <img src="imgs/spagetti.jpg" alt="">
+                    <h3>Spaghetti</h3>
+                    <p>An Italian dish</p>
+                    <div class="buttons-container">
+                        <button class="favorite-btn"><i class="fa fa-heart"></i></button>
+                        <button class="recipe-details"> <a href="#">view details</a> </button>
+                    </div>
+                </div>
+                
+                <div class="recipe-card" data-name="beans">
+                    <img src="imgs/beans.jpg" alt="">
+                    <h3>Beans</h3>
+                    <p>An Egyption dish</p>
+                    <div class="buttons-container">
+                        <button class="favorite-btn"><i class="fa fa-heart"></i></button>
+                        <button class="recipe-details"> <a href="#">view details</a> </button>
+                    </div>
+                </div>
+                <div class="recipe-card" data-name="Turkey_Tacos">
+                    <img src="imgs/Turkey_Tacos.jpg" alt="">
+                    <h3>Turkey Tacos</h3>
+                    <p>A Mexican American dish</p>
+                    <div class="buttons-container">
+                        <button class="favorite-btn"><i class="fa fa-heart"></i></button>
+                        <button class="recipe-details"> <a href="#">view details</a> </button>
+                    </div>
+                </div>
+                <div class="recipe-card" data-name="Hearty_Egg_Burritos">
+                    <img src="imgs/Hearty_Egg_Burritos.jpg" alt="">
+                    <h3>Hearty Egg Burritos</h3>
+                    <p>A Mexican American dish</p>
+                    <div class="buttons-container">
+                        <button class="favorite-btn"><i class="fa fa-heart"></i></button>
+                        <button class="recipe-details"> <a href="#">view details</a> </button>
+                    </div>
+                </div>
+                <div class="recipe-card" data-name="Purple_Vegetable_Pancakes">
+                    <img src="imgs/Purple_Vegetable_Pancakes.jpg" alt="">
+                    <h3>Purple Vegetable Pancakes</h3>
+                    <p>American Fusion dish</p>
+                    <div class="buttons-container">
+                        <button class="favorite-btn"><i class="fa fa-heart"></i></button>
+                        <button class="recipe-details"> <a href="#">view details</a> </button>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+    
+    <script>
+        let user = localStorage.getItem("user");
+      if(!user)
+{
+    window.location.href ='Login.html';
+}   
+     let userparse = JSON.parse(user);
+     if(userparse.is_admin === "true"){
+        let manage_recipes = document.getElementById("manage_recipes").innerHTML="Manage recipes";
+     }
+     else{
+        let Favorits= document.getElementById("Favorits").innerHTML = "Favorits";
+     }
+let logout = document.getElementById("logout");
+     logout.addEventListener('click', ()=>{
+        localStorage.removeItem("user_data");
+        window.location.href="Login.html"
+     })
+    </script>
+</body>
+</html>

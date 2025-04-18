@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Home.css">
+    <title>Recipe Finder </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+</head>
+<body>
+    <nav>
+        <div class="cookhub">
+            <img src="imgs/WhatsApp Image 2025-04-02 at 22.45.18_7308d5b7.jpg"> 
+        <h1>CookHub</h1>
+
+        </div>
+        <div class="about">
+        <a href="Home.html">Home</a>
+        <a href="Recipe_List_Page.html">Recipes</a>
+        <a id="Favorits" href="Favourite Page.html"></a>
+        <a href="SearchPage.html">Find recipe</a>
+        <a id="manage_recipes" href="Admin.html"></a>
+    </div>
+        <div class="about">
+            <button id="logout"><i class="fa-solid fa-user"></i>LogOut</button>
+        
+        <!-- <a href="Login.html"> 
+            <button><i class="fa-solid fa-arrow-right"></i> login</button></a> -->
+       
+    </div>
+    </nav>
+
+    <div class="hero">
+        <div class="left">
+            <h1>Find Delicious Recipes for Every Occasion</h1>
+            <p>Explore, Search, and Save Your Favorite Recipes</p>
+        </div>
+        <div class="right"><img src="imgs/tips-hero.webp"/></div>
+    </div>
+    <div class="recipes">
+        <h2>Featured recipes 🍽️ </h2>
+        <div class="details">
+        <div class="pasta">
+        <img src="imgs/Cooking-Matters-Recipe-HeartyVegPasta.webp"/>
+        <h3>pasta</h3>
+        <!-- <button >view details</button> -->
+    </div>
+        <div class="minipizza">
+        <img src="imgs/Cooking-Matters-Recipe-MiniPizza.webp"/>
+        <h3>Mini Pizza</h3>
+        <!-- <button >view details</button> -->
+    </div>
+         <div class="pancake">
+        <img src="imgs/Cooking-Matters-Recipe-OrangeOatmealPancake.webp"/>
+        <h3>Pancake</h3>
+        <!-- <button >view details</button> -->
+    </div>
+    <div class="EggBurrito">
+        <img src="imgs/Cooking-Matters-Recipe-EggBurrito.webp"/>
+        <h3>EggBurrito</h3>
+</div>
+
+</div>
+ <!-- <div class="categories" >
+    <h1>categories available</h1>
+    <div class="categoruList">
+        <div class=""><div style="width:50px; height:50px; border-radius:50%;"><img style="width:100%; height:100%; object-fit:cover" src="imgs/Cooking-Matters-Recipe-PumpkinMuffin.webp"></div><p>cake</p></div>
+    
+
+        <div class=""><div style="width:50px; height:50px; border-radius:50%;"  ><img style="width:100%; height:100%; object-fit:cover" src="imgs/istockphoto-1394514086-612x612.jpg"></div><p>cake</p></div>
+    
+    
+        <div class=""><div style="width:50px; height:50px; border-radius:50%;"><img style="width:100%; height:100%; object-fit:cover" src="imgs/istockphoto-1454741285-612x612.jpg"></div><p>cake</p></div>
+    
+    
+        <div class=""><div style="width:50px; height:50px; border-radius:50%;"><img style="width:100%; height:100%; object-fit:cover" src="imgs/istockphoto-1454741285-612x612.jpg"></div></div><p>cake</p></div>
+    
+    
+        <div class=""><div style="width:50px; height:50px; border-radius:50%;" ><img style="width:100%; height:100%; object-fit:cover" src="imgs/istockphoto-2061716709-612x612.jpg"></div><p>cake</p></div>
+    
+</div>  -->
+</div>
+
+</div>
+
+    </div>
+    <section class="cooking-challenge">
+        <h2>🔥 Weekly Cooking Challenge</h2>
+        <p style="padding-bottom: 2px;">🍕 This Week: <strong>Homemade Pizza Challenge!</strong></p>
+        <p >Try making your own pizza from scratch and share your result using <strong>#RecipeFinderChallenge</strong>!</p>
+        <button id="join-challenge">Join the Challenge!</button>
+        <p id="challenge-result" style="margin-top: 15px; font-weight: bold; color: #e64a19;"></p>
+      </section>
+
+      <footer>
+        <div class="footer-container">
+           
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Recipes</a></li>
+                    <li><a href="#">Favorites</a></li>
+                    <li><a href="#">Add Recipe</a></li>
+                    <li><a href="#">Manage Recipes</a></li>
+                </ul>
+            </div>
+    
+           
+            <!-- <div class="footer-social">
+                <h3>Follow Us</h3>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div> -->
+    
+            
+            <div class="footer-info">
+                <p>© 2025 Recipe Finder. All rights reserved.</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    
+      <script>document.getElementById("join-challenge").addEventListener("click", function () {
+        alert("🔥 Your Challenge: Try making your own homemade pizza and share it using #RecipeFinderChallenge!")
+      });
+      let user = localStorage.getItem("user");
+      if(!user)
+{
+    window.location.href ='Login.html';
+}   
+     let userparse = JSON.parse(user);
+     if(userparse.is_admin === "true"){
+        let manage_recipes = document.getElementById("manage_recipes").innerHTML="Manage recipes";
+     }
+     else{
+        let Favorits= document.getElementById("Favorits").innerHTML = "Favorits";
+     }
+let logout = document.getElementById("logout");
+     logout.addEventListener('click', ()=>{
+        localStorage.removeItem("user_data");
+        window.location.href="Login.html"
+     })
+</script>
+</body>
+</html>

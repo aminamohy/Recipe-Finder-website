@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="Favourite Page.css"/>
+  <title>Favorite Recipes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ 
+</head>
+<body>
+
+  
+    <nav>
+      <div class="cookhub">
+      
+      <img src="imgs/WhatsApp Image 2025-04-02 at 22.45.22_80c2abde.jpg"/>
+      <h1>CookHub</h1>
+  </div>
+      <div class="about">
+      <a href="Home.html">Home</a>
+        <a href="Recipe_List_Page.html">Recipes</a>
+        <a id="Favorits"  href="Favourite Page.html"></a>
+        <a href="SearchPage.html">Find recipe</a>
+        <a id="manage_recipes" href="Admin.html"></a>
+      </div>
+      <div class="about">
+
+      <button id="logout"><i class="fa-solid fa-arrow-right"></i> LogOut</button>
+      </div>
+  </nav>
+
+  <h1 class="Favorite"> Favorite Recipes</h1>
+ 
+  <div class="favorites-container">
+    <div class="recipe-card">
+      <img src="imgs/shawrma.jpg" alt="Shawarma">
+      <p class="title">Shawrma</p>
+      <span>Syrian dish</span>
+        <i class="fa fa-heart"></i>
+    </div>
+  </div>
+  <script>
+    let user = localStorage.getItem("user");
+      if(!user)
+{
+    window.location.href ='Login.html';
+}   
+     let userparse = JSON.parse(user);
+     if(userparse.is_admin === "true"){
+        window.location.href="Home.html";
+     }
+     else{
+      let manage_recipes = document.getElementById("Favorits").innerHTML="Favorites";
+     }
+let logout = document.getElementById("logout");
+     logout.addEventListener('click', ()=>{
+        localStorage.removeItem("user_data");
+        window.location.href="Login.html"
+     })
+  </script>
+</body>
+</html>

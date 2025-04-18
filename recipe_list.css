@@ -1,0 +1,176 @@
+*{
+    padding:0;
+    margin:0;
+    font-family:sans-serif;
+    font-style: black;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #F5EBDC;
+    height: 100vh;
+     overflow-x: hidden;  
+}
+
+nav{
+    width:100%;
+    background-color: #D35400;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: #F5EBDC;
+    font-size:larger;
+    Padding-top:0.5%;
+    padding-bottom: 0.5%;
+    font-weight:900;
+     top:0;
+    bottom: 0;
+    z-index: 1000; 
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    position : sticky;
+
+}
+nav .about{
+    display:flex;
+    gap:20px;
+}
+nav a{
+    text-decoration: none;
+    color:#F5EBDC;
+}
+.cookhub{
+    display:flex;
+    align-items: center;
+    gap:5px;
+}
+
+nav button {
+    background: #F5EBDC;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: #D35400;
+    font-size: 16px;
+}
+
+nav button:hover {
+    background: #E67E22;
+    color: white;
+}
+
+nav button i {
+    margin-right: 5px;
+}
+
+nav img {
+    height: 50px; 
+    border-radius: 50%; 
+}
+
+
+.content {
+    width: 100%;
+    padding: 20px;
+    /* margin-left: 10px;  */
+    margin-top: 10px;
+    display:flex;
+}
+
+#searchInput {
+    padding: 8px;
+    width: 200px;
+    margin-right: 5px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border-style: none;
+
+}
+#recipeList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.recipe-card {
+    background: white;
+    flex-grow:1;
+    width: 250px;
+    padding: 10px;
+    margin:5px;
+    border-radius: 5px;
+    text-align: center; 
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    transition:0.5s;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.recipe-card:hover{
+    transform: scale(1.05);
+}
+
+.recipe-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.recipe-details {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    
+}
+/* stop */
+.search,.recipe-details,button a {
+    text-decoration: none ;
+    background-color: #D35400; 
+    color: white; 
+    border: none;
+    padding: 8px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.favorite-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: gray;
+    transition: color 0.3s ease-in-out;
+}
+
+.recipe-card .buttons-container {
+    display: flex;
+    justify-content: flex-start; 
+    
+    margin-top: auto; /* Push buttons to the bottom of the card */
+}
+
+.favorite-btn{
+    text-decoration: none;
+    color: gray; /* Text color */
+    border: none;
+    
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.favorite-btn:hover {
+    color: #D35400; 
+    transform: scale(1.05); 
+}
+
+
+.search:hover,.recipe-details:hover,.recipe-details a:hover {
+    background-color: #A84300; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight pop effect */
+}
+
+.search:active ,button a:active,.favorite-btn:active{
+    transform: scale(0.98); /* Press effect */
+}

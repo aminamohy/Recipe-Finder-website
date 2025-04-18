@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F5EBDC;
+    /* height: 100vh; */
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-image: url('https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  min-height: 100vh;
+}
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 247, 230, 0.85);
+    z-index: -1;
+  }
+  
+nav{
+    width:100%;
+    background-color: #D35400;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: #F5EBDC;
+    font-size:larger;
+    Padding-top:0.5%;
+    padding-bottom: 0.5%;
+    font-weight:900;
+     top:0;
+    bottom: 0;
+    z-index: 1000; 
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    position : sticky;
+
+}
+nav .about{
+    display:flex;
+    gap:20px;
+}
+nav a{
+    text-decoration: none;
+    color:#F5EBDC;
+}
+.cookhub{
+    display:flex;
+    align-items: center;
+    gap:5px;
+}
+
+nav button {
+    background: #F5EBDC;
+    color: #D35400;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+nav button:hover {
+    background: #E67E22;
+    color: white;
+    
+}
+
+nav button i {
+    margin-right: 5px;
+}
+
+nav img {
+    height: 50px; 
+    border-radius: 50%; 
+}
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 5%;
+}
+  
+.container {
+    width: 70%;
+    background-color: white;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+  
+h3, h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+  
+form {
+    display: flex;
+    flex-direction: column;
+}
+  
+label {
+    font-size: 1rem;
+    margin: 0.3rem 0;
+}
+  
+input,select,textarea {
+    font-size: 1rem;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="file"] {
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+  
+#ingredients-list,
+#directions-list {
+    margin-bottom: 1.5rem;
+}
+  
+.ingredient,
+.direction {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+  
+.ingredient input,
+.ingredient select,
+.direction textarea {
+    width: 100%;
+}
+  
+textarea {
+    resize: vertical;
+    height: 6rem;
+}
+  
+button.submit-btn {
+    
+    background-color: #D35400;
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  
+button.submit-btn:hover {
+    background-color: #F5EBDC;
+    color: #D35400;
+
+}
+  
+button.add-btn {
+    background-color: #D35400;
+    color: white;
+    
+    border: 1px solid #D35400;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+  
+button.add-btn:hover {
+    background-color: #F5EBDC;
+    color: #D35400;
+    
+}
+  
+button.remove-btn {
+    background-color: #D35400; 
+    color: white;
+    
+    margin-top: 3px;
+    width: 120px; 
+    height: 35px; 
+    border-radius: 5px; 
+    
+    border: 1px solid #D35400;
+    font-size: 1.5rem;
+    cursor: pointer; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+button.remove-btn:hover {
+    background-color: #F5EBDC;
+    color: #D35400;
+     
+}
+
+button.remove-btn:active {
+    transform: scale(0.95); 
+}
+
+button.remove-btn i {
+    font-size: 1.2rem; 
+}
+#directions-list .direction .remove-btn{
+    margin-top: 20px;
+    width: 50px;
+    height: 50px; 
+    font-size: 2rem;
+}
+
+  
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem 5%;
+      }
+    
+      nav .about {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        margin-top: 1rem;
+      }
+    
+      nav button {
+        width: 100%;
+        text-align: center;
+      }
+  
+    .container {
+        padding: 1.5rem;
+    }
+  
+    h2 {
+        font-size: 1.8rem;
+    }
+  
+    label,
+    input,
+    select,
+    textarea {
+        font-size: 0.9rem;
+    }
+  
+    .ingredient input,
+    .ingredient select,
+    .direction textarea {
+        font-size: 1rem;
+    }
+  
+    button.submit-btn {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+  
+    button.add-btn {
+        font-size: 0.9rem;
+    }
+  
+    button.remove-btn {
+        font-size: 1.2rem;
+    }
+}

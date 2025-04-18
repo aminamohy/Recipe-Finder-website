@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Meal Calorie Calculator</title>
+    <link rel="stylesheet" href="Calories Calc.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <nav>
+        <div class="cookhub">
+            <img src="imgs/WhatsApp Image 2025-04-02 at 22.45.18_7308d5b7.jpg"> 
+        <h1>CookHub</h1>
+
+        </div>
+        <div class="about">
+            <a href="Home.html">Home</a>
+            <a href="Recipe_List_Page.html">Recipes</a>
+            <a href="Favourite Page.html">Favorits</a>
+            <a href="SearchPage.html">Find recipe</a>
+            <a href="Admin.html">Manage recipes</a>
+    </div>
+        <div class="about">
+        <button><i class="fa-solid fa-user"></i>sign up</button>
+        <button><i class="fa-solid fa-arrow-right"></i> login</button>
+    </div>
+    </nav>
+    
+    <div class="container">
+        <h1>Meal Calories Calculator</h1>
+        <input list="meal" placeholder="Enter a meal..." autofocus>
+        <datalist id="meal">
+            <option value="burger">
+            <option value="pasta">
+            <option value="pizza">
+        </datalist>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Ingredients</th>
+                    <th>Calories</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>pasta</th>
+                    <th>150</th>
+                </tr>
+                <tr>
+                    <th>sauce</th>
+                    <th>50</th>
+                </tr>
+                <tr>
+                    <th>cheese</th>
+                    <th>50</th>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total Calories</th>
+                    <th>250</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>

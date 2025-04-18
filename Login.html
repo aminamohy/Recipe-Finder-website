@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="LoginStyle.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Welcome Back!</h1>
+            <p>More than <span>35,000 recipes</span> from around the world!</p>
+        </div>
+        
+        <form id="login-form" class="login-form">
+            <div class="input-group">
+                <input id="email" type="email" placeholder="Enter Email Address" required>
+            </div>
+            
+            <div class="input-group">
+                <input id="password" type="password" placeholder="Password" required>
+            </div>
+            
+            <div class="options">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="#" class="forgot">Forgot Password?</a>
+                
+            </div>
+            
+            <button type="submit" class="btn">LOGIN</button>
+            
+            <p class="divider">or continue with</p>
+            
+            <div class="social-icons">
+                <img src="imgs/facebook.jpg" alt="Facebook">
+                <img src="imgs/google.jpg" alt="Google">
+                <img src="imgs/twitter.jpg" alt="Twitter">
+            </div>
+            <div class="options" >
+            <a href="SignUp.html" >Don't have an account Sign Up here</a>
+    </div>
+        </form>
+    </div>
+    
+    <footer>
+        <nav>
+            <a href="#">Explore</a>
+            <a href="#">What's New</a>
+            <a href="#">Help & Feedback</a>
+            <a href="#">Contact</a>
+        </nav>
+        <p>© 2025 Chef's Recipe. All rights reserved.</p>
+    </footer>
+    <script>
+          let loginform = document.getElementById("login-form") ;
+          loginform.addEventListener("submit" , (e)=>{
+              e.preventDefault();
+
+              let email = document.getElementById("email").value;
+          let pwd = document.getElementById("password").value;
+          let user = localStorage.getItem("user_data");
+          let userparse = JSON.parse(user);
+          if(user){
+            if(email === userparse.email && pwd === userparse.password){
+                localStorage.setItem("user" , JSON.stringify(userparse));
+                window.location.href="Home.html";
+            }
+            else{
+                alert("incorrect password");
+            }
+          }
+          else{
+            alert("account not found");
+          }
+
+          })
+              </script>
+</body>
+</html>

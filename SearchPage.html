@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <link rel="stylesheet" href="SearchPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="cookhub">
+                <img src="imgs/WhatsApp Image 2025-04-02 at 22.45.18_7308d5b7.jpg"> 
+            <h1>CookHub</h1>
+    
+            </div>
+            <div class="about">
+            <a href="Home.html">Home</a>
+            <a href="Recipe_List_Page.html">Recipes</a>
+            <a id="Favorits" href="Favourite Page.html"></a>
+            <a  href="SearchPage.html">Find recipe</a>
+            <a id="manage_recipes" href="Admin.html"> </a>
+        </div>
+            <div class="about">
+           
+            <button id="logout"><i class="fa-solid fa-arrow-right"></i> LogOut</button>
+        </div>
+        </nav>
+        <h1 class="finder">Recipe Finder</h1>
+        <div class="search-box">
+            <input type="text" placeholder="search recipes...">
+            <button>Search</button>
+        </div>
+        <P id="Suggest">Suggestions</P>
+        <div class="recipes">
+            <div class="recipe">
+                <img src="imgs/Spaghetti Carbonara.jpg" alt="Spaghetti Carbonara">
+                <h3>Spaghetti Carbonara</h3>
+                <p>⏱ 25 min</p>
+                <p>🍽 5 ingredients</p>
+            </div>
+            <div class="recipe">
+                <img src="imgs/Margherita Pizza.jpg" alt="Margherita Pizza">
+                <h3>Margherita Pizza</h3>
+                <p>⏱ 1hr 15 min</p>
+                <p>🍽 6 ingredients</p>
+            </div>
+            <div class="recipe">
+                <img src="imgs/Pancakes.jpg" alt="Pancakes">
+                <h3>Pancakes</h3>
+                <p>⏱ 20 min</p>
+                <p>🍽 7 ingredients</p>
+            </div>
+            <div class="recipe">
+                <img src="imgs/gua.jpg" alt="Guacamole">
+                <h3>Guacamole</h3>
+                <p>⏱ 10 min</p>
+                <p>🍽 6 ingredients</p>
+            </div>
+            <div class="recipe">
+                <img src="imgs/salad.jpg" alt="Caesar Salad">
+                <h3>Caesar Salad</h3>
+                <p>⏱ 20 min</p>
+                <p>🍽 7 ingredients</p>
+            </div>
+            <div class="recipe">
+                <img src="imgs/beef.jpg" alt="Beef Stew">
+                <h3>Beef Stew</h3>
+                <p>⏱ 2hr 30 min</p>
+                <p>🍽 10 ingredients</p>
+            </div>
+            <div class="recipe">
+                <img src="imgs/Chocolate Chip Cookies.jpg" alt="Chocolate Chip Cookies">
+                <h3>Chocolate Chip Cookies</h3>
+                <p>⏱ 1hr 40 min</p>
+                <p>🍽 9 ingredients</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        let user = localStorage.getItem("user");
+      if(!user)
+{
+    window.location.href ='Login.html';
+}   
+     let userparse = JSON.parse(user);
+     if(userparse.is_admin === "true"){
+        let manage_recipes = document.getElementById("manage_recipes").innerHTML="Manage recipes";
+     }
+     else{
+        let Favorits= document.getElementById("Favorits").innerHTML = "Favorits";
+     }
+let logout = document.getElementById("logout");
+     logout.addEventListener('click', ()=>{
+        localStorage.removeItem("user_data");
+        window.location.href="Login.html"
+     })
+    </script>
+</body>
+</html>
