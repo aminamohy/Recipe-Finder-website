@@ -5,6 +5,8 @@ const recipes = [
     courseName: "main course",
     description: "A Surian dish",
     image: "imgs/shawrma.jpg",
+    time:"62 min",
+    noingredients:"3",
     ingredients: [
       { id: 1, name: "Chicken", quantity: "200g" },
       { id: 2, name: "Garlic Sauce", quantity: "2 tbsp" },
@@ -17,6 +19,8 @@ const recipes = [
     courseName: "main course",
     description: "An Italian dish",
     image: "imgs/spagetti.jpg",
+    time:"35 min",
+    noingredients:"3",
     ingredients: [
       { id: 1, name: "Spaghetti", quantity: "100g" },
       { id: 2, name: "Tomato Sauce", quantity: "1 cup" },
@@ -29,6 +33,8 @@ const recipes = [
     courseName: "main course",
     description: "An Egyptian dish",
     image: "imgs/beans.jpg",
+    time:"20 min",
+    noingredients:"7",
     ingredients: [
       { id: 1, name: "Fava Beans", quantity: "1 cup" },
       { id: 2, name: "Olive Oil", quantity: "1 tbsp" },
@@ -45,10 +51,16 @@ const recipes = [
     courseName: "main course",
     description: "A Mexican American dish",
     image: "imgs/Turkey_Tacos.jpg",
+    time:"50 min",
+    noingredients:"6",
     ingredients: [
       { id: 1, name: "Ground Turkey", quantity: "150g" },
       { id: 2, name: "Taco Shell", quantity: "2" },
-      { id: 3, name: "Lettuce", quantity: "1/2 cup" }
+      { id: 3, name: "Lettuce", quantity: "1/2 cup" },
+      { id:4, name: "Onion", quantity: "200g"},
+      { id:5, name:"Garlic", quantity: "2 cloves"},
+      { id:6, name:"Cilantro leaves",quantity:"1/2 cup"},
+      
     ]
   },
   {
@@ -57,10 +69,15 @@ const recipes = [
     courseName: "appetizers",
     description: "A protein-packed breakfast",
     image: "imgs/Hearty_Egg_Burritos.jpg",
+    time:"40 min",
+    noingredients:"5",
     ingredients: [
       { id: 1, name: "Eggs", quantity: "2" },
       { id: 2, name: "Black Beans", quantity: "1/4 cup" },
-      { id: 3, name: "Tortilla", quantity: "1" }
+      { id: 3, name: "Tortilla", quantity: "1" },
+      { id:4, name: "Onion", quantity: "200g"},
+      { id:5, name:"Garlic", quantity: "2 cloves"},
+      
     ]
   },
   {
@@ -69,10 +86,13 @@ const recipes = [
     courseName: "appetizers",
     description: "Colorful veggie pancakes",
     image: "imgs/Purple_Vegetable_Pancakes.jpg",
+    time:"30 min",
+    noingredients:"4",
     ingredients: [
       { id: 1, name: "Beetroot", quantity: "1/2 cup" },
       { id: 2, name: "Carrot", quantity: "1/4 cup" },
-      { id: 3, name: "Flour", quantity: "1/4 cup" }
+      { id: 3, name: "Flour", quantity: "1/4 cup" },
+      { id:4, name: "Onion", quantity: "200g"}
     ]
   }
 ];
@@ -144,13 +164,15 @@ for (let i = 0; i < detailsbtns.length; i++) {
       name: fullRecipe.name,
       image: fullRecipe.image,
       title: fullRecipe.name,
+      time:fullRecipe.time,
+      noingredients:fullRecipe.noingredients,
       ingredients: fullRecipe.ingredients
     };
 
     localStorage.setItem("selectedRecipe", JSON.stringify(recipe));
 
-    const targetPage = detailsbtns[i].getAttribute("data-target");
-    window.location.href = targetPage;
+    const targetpage = detailsbtns[i].getAttribute("data-target");
+    window.location.href = targetpage;
   };
 }
 
