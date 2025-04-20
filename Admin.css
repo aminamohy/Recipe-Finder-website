@@ -80,28 +80,6 @@ nav img {
     color: #FFF6F0;
 }
 
-/* nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    padding: 10px;
-    cursor: pointer;
-    background: #D35400;
-    color: white;
-    text-align: center;
-    border-radius: 5px;
-    margin-bottom: 5px;
-} */
-
-/* nav ul .active {
-    background: #A84300; 
-}
-
-nav ul li:hover {
-    background: #A84300;
-} */
 
 .content {
     flex: 1;
@@ -166,7 +144,7 @@ th, td {
 }
 
 .edit {
-    background: #FFF6F0;
+    background: #09d058;
     color: black;
     border: none;
     padding: 5px;
@@ -179,6 +157,9 @@ th, td {
     padding: 5px;
     cursor: pointer;
     color: white;
+}
+.delete:hover{
+    background-color: #068137;
 }
 
 .delete:hover {

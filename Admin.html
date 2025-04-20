@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Admin</title>
     <link rel="stylesheet" href="Admin.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="Edit Recipe.html">
 </head>
 <body>
     <div class="container">
@@ -46,6 +47,7 @@
             <section class="recipe-list">
                 <h2>Recipe List</h2>
                 <a href="Add Reciepe.html"><button class="add-recipe">Add Recipe</button></a>
+               
                 
                 <table>
                     <thead>
@@ -62,7 +64,8 @@
                             <td>Pasta</td>
                             <td>01/15/2025</td>
                             <td>
-                                <button class="edit">Edit</button>
+                                <a href="Edit Recipe.html?id=1"><button class="edit">Edit</button></a>
+                                <button class="delete">Delete</button>
                             </td>
                         </tr>
                         <tr>
@@ -70,7 +73,8 @@
                             <td>Dessert</td>
                             <td>01/14/2025</td>
                             <td>
-                                <button class="edit">Edit</button>
+                                <a href="Edit Recipe.html?id=2"><button class="edit">Edit</button></a>
+                                <button class="delete">Delete</button>
                             </td>
                         </tr>
                         <tr>
@@ -78,6 +82,7 @@
                             <td>Salad</td>
                             <td>01/10/2025</td>
                             <td>
+                                <a href="Edit Recipe.html?id=3"><button class="edit">Edit</button></a>
                                 <button class="delete">Delete</button>
                             </td>
                         </tr>
@@ -86,6 +91,7 @@
                             <td>Main Course</td>
                             <td>1/1/2025</td>
                             <td>
+                                <a href="Edit Recipe.html?id=4"><button class="edit">Edit</button></a>
                                 <button class="delete">Delete</button>
                             </td>
                         </tr>
@@ -138,6 +144,8 @@ let logout = document.getElementById("logout");
       localStorage.removeItem("user_data");
       window.location.href="Login.html"
    })
+
+
   </script>
 </body>
 </html>
