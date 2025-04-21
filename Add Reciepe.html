@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="Add Reciepe.css"/>
-  <l
+  
   <title>Add Recipe</title>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -41,6 +41,8 @@
 
             <label for="duration">Cook Duration (minutes):</label>
             <input type="number" id="duration" min="1" placeholder="30" required>
+            <label for="description">Recipe Description:</label>
+            <textarea id="description" placeholder="Write a short description of your recipe..." required></textarea>
 
             <h3>Ingredients</h3>
             <div id="ingredients-list">
@@ -64,7 +66,7 @@
                     <button type="button" class="remove-btn"><i class="fas fa-times"></i></button>
                 </div>
             </div>
-            <button type="button" class="add-btn">+ Add Step</button>
+            <button type="button" class="add-btn" id="add-direction-btn">+ Add Step</button>
 
             <h3>Upload Photo</h3>
             <input type="file" id="recipe-photo" accept="image/*" required>
@@ -73,5 +75,6 @@
         </form>
     </div>
   </main>
+  <script src="Add Reciepe.js"></script>
 </body>
 </html>
