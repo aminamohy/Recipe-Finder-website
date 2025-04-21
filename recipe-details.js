@@ -12,6 +12,12 @@ document.addEventListener("DOMContentLoaded", function () {
       li.textContent = `${ingredient.name} - ${ingredient.quantity}`;
       ingredientList.appendChild(li);
     });
+    const instructionList = document.querySelector(".instructions ul");
+    recipe.instructions.forEach(instruction => {
+      const li = document.createElement("li");
+      li.textContent = `${instruction}`;
+      instructionList.appendChild(li);
+    });
   
 });
 
