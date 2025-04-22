@@ -2,10 +2,36 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("recipe-form");
   const ingredientsList = document.getElementById("ingredients-list");
   const addIngredientBtn = document.querySelector(".add-btn"); 
-
   const directionsList = document.getElementById("directions-list");
   const addDirectionBtn = document.getElementById("add-direction-btn"); 
+  const photoInput = document.getElementById("recipe-photo");
+  const imagePreviewContainer = document.createElement("div"); 
+  photoInput.insertAdjacentElement('afterend', imagePreviewContainer);
+  imagePreviewContainer.style.marginTop = '10px';
 
+  photoInput.addEventListener("change", function(e) {
+    if (e.target.files && e.target.files[0]) {
+      const reader = new FileReader();
+      
+      reader.onload = function(event) {
+      
+        imagePreviewContainer.innerHTML = '';
+        
+  
+        const previewImg = document.createElement('img');
+        previewImg.src = event.target.result;
+        previewImg.style.maxWidth = '200px';
+        previewImg.style.maxHeight = '200px';
+        previewImg.style.display = 'block';
+        previewImg.style.borderRadius = '4px';
+        previewImg.style.margin = '10px 0';
+        
+        imagePreviewContainer.appendChild(previewImg);
+      };
+      
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  });
 
   addIngredientBtn.addEventListener("click", function () {
     const ingredientDiv = document.createElement("div");
@@ -22,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     ingredientsList.appendChild(ingredientDiv);
 
-   
     ingredientDiv.querySelector(".remove-btn").addEventListener("click", () => {
       ingredientDiv.remove();
     });
@@ -37,24 +62,24 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     directionsList.appendChild(directionDiv);
 
-   
     directionDiv.querySelector(".remove-btn").addEventListener("click", () => {
       directionDiv.remove();
     });
   });
 
-  
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const name = document.getElementById("recipe-name").value;
     const courseName = document.getElementById("course")?.value || "main course"; 
-    
     const duration = document.getElementById("duration").value;
     const description = document.getElementById("description")?.value || "";
-    const photoInput = document.getElementById("recipe-photo");
 
-   
+    if (!name || !duration || photoInput.files.length === 0) {
+      alert("Please fill in all required fields including the recipe photo.");
+      return;
+    }
+
     const ingredients = Array.from(ingredientsList.querySelectorAll(".ingredient")).map((ing, index) => {
       const quantityInput = ing.querySelectorAll("input[type='text']")[0];
       const nameInput = ing.querySelectorAll("input[type='text']")[1];
@@ -67,28 +92,24 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     });
 
-    
-const instructions = Array.from(directionsList.querySelectorAll("textarea")).map(textArea => textArea.value.trim());
+    const instructions = Array.from(directionsList.querySelectorAll("textarea"))
+      .map(textArea => textArea.value.trim())
+      .filter(instruction => instruction); 
 
-
-    
-    if (photoInput.files.length === 0) {
-      alert("Please select a photo for the recipe.");
+    if (ingredients.length === 0 || instructions.length === 0) {
+      alert("Please add at least one ingredient and one instruction.");
       return;
     }
 
     const reader = new FileReader();
     reader.onload = function (event) {
-      const imageData = event.target.result;
-
       const newRecipe = {
         id: Date.now(),
         name: name,
         courseName: courseName,
         description: description,
-        image: imageData,
+        image: event.target.result,
         time: `${duration} min`,
-      
         noingredients: ingredients.length.toString(),
         ingredients: ingredients,
         instructions: instructions
@@ -103,4 +124,3 @@ const instructions = Array.from(directionsList.querySelectorAll("textarea")).map
     reader.readAsDataURL(photoInput.files[0]); 
   });
 });
-
