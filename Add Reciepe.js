@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const name = document.getElementById("recipe-name").value;
     const courseName = document.getElementById("course")?.value || "main course"; 
-    const servings = document.getElementById("servings").value;
+    
     const duration = document.getElementById("duration").value;
     const description = document.getElementById("description")?.value || "";
     const photoInput = document.getElementById("recipe-photo");
@@ -88,7 +88,7 @@ const instructions = Array.from(directionsList.querySelectorAll("textarea")).map
         description: description,
         image: imageData,
         time: `${duration} min`,
-        servings: servings,
+      
         noingredients: ingredients.length.toString(),
         ingredients: ingredients,
         instructions: instructions
@@ -99,6 +99,12 @@ const instructions = Array.from(directionsList.querySelectorAll("textarea")).map
       localStorage.setItem("recipes", JSON.stringify(recipes));
       window.location.href = "Recipe_List_Page.html";
     };
+
+    reader.readAsDataURL(photoInput.files[0]); 
+  });
+});
+
+
 
     reader.readAsDataURL(photoInput.files[0]); 
   });
