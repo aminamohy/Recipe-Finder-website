@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const directionDiv = document.createElement("div");
     directionDiv.className = "direction";
     directionDiv.innerHTML = `
-      <textarea placeholder="اكتب خطوة من خطوات التحضير..." required></textarea>
+      <textarea placeholder="write a short description of your recipe" required></textarea>
       <button type="button" class="remove-btn"><i class="fas fa-times"></i></button>
     `;
     directionsList.appendChild(directionDiv);
@@ -99,12 +99,6 @@ const instructions = Array.from(directionsList.querySelectorAll("textarea")).map
       localStorage.setItem("recipes", JSON.stringify(recipes));
       window.location.href = "Recipe_List_Page.html";
     };
-
-    reader.readAsDataURL(photoInput.files[0]); 
-  });
-});
-
-
 
     reader.readAsDataURL(photoInput.files[0]); 
   });
