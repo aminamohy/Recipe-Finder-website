@@ -163,21 +163,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 document.addEventListener("DOMContentLoaded", function () {
   const recipeListContainer = document.getElementById("recipeList");
+//** */
+  
+  const recipes = JSON.parse(localStorage.getItem("allRecipes")) || [];
 
-  // استرجاع الوصفات من localStorage
-  const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
-
-  // التحقق إذا كانت هناك وصفات موجودة في الlocalStorage
   if (recipes.length === 0) {
     recipeListContainer.innerHTML = "<p>No recipes found. Please add some recipes.</p>";
   } else {
-    // عرض كل وصفة
+    
     recipes.forEach(recipe => {
       const recipeDiv = document.createElement("div");
       recipeDiv.classList.add("recipe-card");
       recipeDiv.dataset.name = recipe.name;
-
-      // إضافة محتوى الوصفة في العنصر
       recipeDiv.innerHTML = `
         <img src="${recipe.image}" alt="${recipe.name}">
         <h3>${recipe.name}</h3>
@@ -188,7 +185,6 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       `;
 
-      // إضافة العنصر إلى الصفحة
       recipeListContainer.appendChild(recipeDiv);
       FavandDetails(); 
 
@@ -264,6 +260,8 @@ document.addEventListener("DOMContentLoaded", function () {//if i go to another 
     }
   });
 });
+
+
 
 
 
