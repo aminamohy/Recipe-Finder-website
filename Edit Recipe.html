@@ -3,64 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="Edit Recipe.css"/>
+  
   <title>Edit Recipe</title>
-  <link rel="stylesheet" href="Edit Recipe.css">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 </head>
 <body>
-  <div class="container">
-    <h2>Edit Recipe</h2>
-    <form id="edit-recipe-form">
-      <label for="recipe-name">Recipe Name:</label>
-      <input type="text" id="recipe-name" name="recipe-name" placeholder="Enter recipe name"  />
+  <nav>
+    <div class="cookhub">
+    
+    <img src="imgs/WhatsApp Image 2025-04-02 at 22.45.22_80c2abde.jpg"/>
+    <h1>CookHub</h1>
+</div>
+    <div class="about">
+    <a href="Home.html">Home</a>
+        <a href="Recipe_List_Page.html">Recipes</a>
+        <a href="Favourite Page.html">Favorits</a>
+        <a href="SearchPage.html">Find recipe</a>
+        <a href="Admin.html">Manage recipes</a>
+    </div>
+    <div class="about">
+    <button><i class="fa-solid fa-user"></i>sign up</button>
+    <button><i class="fa-solid fa-arrow-right"></i> login</button>
+    </div>
+</nav>
 
-      <label for="description">Description:</label>
-      <textarea id="description" name="description" placeholder="Enter recipe description" ></textarea>
+  <main>
+    <div class="container">
+        <h2>Edit recipe</h2>
+        <form id="recipe-form" enctype="multipart/form-data">
+            <label for="recipe-name">Recipe Name:</label>
+            <input type="text" id="recipe-name" placeholder="Enter recipe name" required>
 
-      <h3 style="color: #D35400;">Ingredients:</h3>
-      <div id="ingredients-list">
-        <div class="ingredient">
-          <input type="text" name="ingredient[]" placeholder="Ingredient" required />
-          <button type="button" class="remove-btn" onclick="removeIngredient(this)">-</button>
-        </div>
-      </div>
-      <button type="button" class="add-btn" onclick="addIngredient()">+ Add Ingredient</button>
+            <label for="servings">Number of Servings:</label>
+            <input type="number" id="servings" min="1" placeholder="1-2" required>
 
-      <button type="submit" class="submit-btn">Save Changes</button>
-    </form>
-  </div>
+            <label for="duration">Cook Duration (minutes):</label>
+            <input type="number" id="duration" min="1" placeholder="30" required>
+            <label for="description">Recipe Description:</label>
+            <textarea id="description" placeholder="Write a short description of your recipe..." required></textarea>
 
-  <script>
-    function addIngredient() {
-      const container = document.getElementById("ingredients-list");
-      const newInput = document.createElement("div");
-      newInput.className = "ingredient";
-      newInput.innerHTML = `
-        <input type="text" name="ingredient[]" placeholder="Ingredient" required />
-        <button type="button" class="remove-btn" onclick="removeIngredient(this)">-</button>
-      `;
-      container.appendChild(newInput);
-    }
+            <h3>Ingredients</h3>
+            <div id="ingredients-list">
+                <div class="ingredient">
+                    <input type="text" placeholder="Quantity" required>
+                    <select>
+                        <option>gram</option>
+                        <option>oz</option>
+                        <option>cup</option>
+                    </select>
+                    <input type="text" placeholder="Ingredient Name" required>
+                    <button type="button" class="remove-btn"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <button type="button" class="add-btn">+ Add Ingredient</button>
 
-    function removeIngredient(button) {
-      button.parentElement.remove();
-    }
+            <h3>Directions</h3>
+            <div id="directions-list">
+                <div class="direction">
+                    <textarea placeholder="Write cooking instructions..." required></textarea>
+                    <button type="button" class="remove-btn"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <button type="button" class="add-btn" id="add-direction-btn">+ Add Step</button>
 
-    document.getElementById("edit-recipe-form").addEventListener("submit", function (e) {
-      e.preventDefault();
+            <h3>Upload Photo</h3>
+            <input type="file" id="recipe-photo" accept="image/*" required>
 
-      const name = document.getElementById("recipe-name").value;
-      const description = document.getElementById("description").value;
-      const ingredients = Array.from(document.querySelectorAll('input[name="ingredient[]"]')).map(input => input.value);
-
-      console.log("Recipe Name:", name);
-      console.log("Description:", description);
-      console.log("Ingredients:", ingredients);
-
-      alert("Recipe updated successfully!");
-    });
-  </script>
+            <button type="submit" class="submit-btn">Submit Recipe</button>
+        </form>
+    </div>
+  </main>
+  <script src="Edit Reciepe.js"></script>
 </body>
 </html>
