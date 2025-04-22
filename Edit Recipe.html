@@ -12,69 +12,77 @@
 <body>
   <nav>
     <div class="cookhub">
-    
-    <img src="imgs/WhatsApp Image 2025-04-02 at 22.45.22_80c2abde.jpg"/>
-    <h1>CookHub</h1>
-</div>
-    <div class="about">
-    <a href="Home.html">Home</a>
-        <a href="Recipe_List_Page.html">Recipes</a>
-        <a href="Favourite Page.html">Favorits</a>
-        <a href="SearchPage.html">Find recipe</a>
-        <a href="Admin.html">Manage recipes</a>
+      <img src="imgs/WhatsApp Image 2025-04-02 at 22.45.22_80c2abde.jpg"/>
+      <h1>CookHub</h1>
     </div>
     <div class="about">
-    <button><i class="fa-solid fa-user"></i>sign up</button>
-    <button><i class="fa-solid fa-arrow-right"></i> login</button>
+      <a href="Home.html">Home</a>
+      <a href="Recipe_List_Page.html">Recipes</a>
+      <a href="Favourite Page.html">Favorits</a>
+      <a href="SearchPage.html">Find recipe</a>
+      <a href="Admin.html">Manage recipes</a>
     </div>
-</nav>
+    <div class="about">
+      <button><i class="fa-solid fa-user"></i>sign up</button>
+      <button><i class="fa-solid fa-arrow-right"></i> login</button>
+    </div>
+  </nav>
 
   <main>
     <div class="container">
-        <h2>Edit recipe</h2>
-        <form id="recipe-form" enctype="multipart/form-data">
-            <label for="recipe-name">Recipe Name:</label>
-            <input type="text" id="recipe-name" placeholder="Enter recipe name" required>
+      <h2>Edit Recipe</h2>
+      <form id="recipe-form" enctype="multipart/form-data">
+        <label for="recipe-name">Recipe Name:</label>
+        <input type="text" id="recipe-name" placeholder="Enter recipe name" required>
 
-            <label for="servings">Number of Servings:</label>
-            <input type="number" id="servings" min="1" placeholder="1-2" required>
+        <!-- Course Section -->
+        <label for="course">Course:</label>
+        <select id="course" required>
+          <option value="main-course">Main Course</option>
+          <option value="dessert">Dessert</option>
+          <option value="appetizer">Appetizer</option>
+          <option value="drink">Drink</option>
+          <option value="other">Other</option>
+        </select>
 
-            <label for="duration">Cook Duration (minutes):</label>
-            <input type="number" id="duration" min="1" placeholder="30" required>
-            <label for="description">Recipe Description:</label>
-            <textarea id="description" placeholder="Write a short description of your recipe..." required></textarea>
+        <label for="duration">Cook Duration (minutes):</label>
+        <input type="number" id="duration" min="1" placeholder="30" required>
+        
+        <label for="description">Recipe Description:</label>
+        <textarea id="description" placeholder="Write a short description of your recipe..." required></textarea>
 
-            <h3>Ingredients</h3>
-            <div id="ingredients-list">
-                <div class="ingredient">
-                    <input type="text" placeholder="Quantity" required>
-                    <select>
-                        <option>gram</option>
-                        <option>oz</option>
-                        <option>cup</option>
-                    </select>
-                    <input type="text" placeholder="Ingredient Name" required>
-                    <button type="button" class="remove-btn"><i class="fas fa-times"></i></button>
-                </div>
-            </div>
-            <button type="button" class="add-btn">+ Add Ingredient</button>
+        <h3>Ingredients</h3>
+        <div id="ingredients-list">
+          <div class="ingredient">
+            <input type="text" placeholder="Quantity" required>
+            <select>
+              <option>gram</option>
+              <option>oz</option>
+              <option>cup</option>
+            </select>
+            <input type="text" placeholder="Ingredient Name" required>
+            <button type="button" class="remove-btn"><i class="fas fa-times"></i></button>
+          </div>
+        </div>
+        <button type="button" class="add-btn">+ Add Ingredient</button>
 
-            <h3>Directions</h3>
-            <div id="directions-list">
-                <div class="direction">
-                    <textarea placeholder="Write cooking instructions..." required></textarea>
-                    <button type="button" class="remove-btn"><i class="fas fa-times"></i></button>
-                </div>
-            </div>
-            <button type="button" class="add-btn" id="add-direction-btn">+ Add Step</button>
+        <h3>Directions</h3>
+        <div id="directions-list">
+          <div class="direction">
+            <textarea placeholder="Write cooking instructions..." required></textarea>
+            <button type="button" class="remove-btn"><i class="fas fa-times"></i></button>
+          </div>
+        </div>
+        <button type="button" class="add-btn" id="add-direction-btn">+ Add Step</button>
 
-            <h3>Upload Photo</h3>
-            <input type="file" id="recipe-photo" accept="image/*" required>
+        <h3>Upload Photo</h3>
+        <input type="file" id="recipe-photo" accept="image/*" required>
+        <img id="image-preview" src="" alt="Recipe Image" width="200">
 
-            <button type="submit" class="submit-btn">Submit Recipe</button>
-        </form>
+        <button type="submit" class="submit-btn">Submit Recipe</button>
+      </form>
     </div>
   </main>
-  <script src="Edit Reciepe.js"></script>
+  <script src="EditReceipe.js"></script>
 </body>
 </html>
