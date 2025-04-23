@@ -38,32 +38,31 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target.classList.contains("delete")) {
       const button = event.target;
       const row = button.closest("tr");
-      const nameToDelete = row.children[0].textContent;
+      const recipeId = parseInt(button.getAttribute("data-id"));
 
       let allRecipes = JSON.parse(localStorage.getItem("allRecipes")) || [];
-      allRecipes = allRecipes.filter(r => r.name !== nameToDelete);
+      allRecipes = allRecipes.filter(r => r.id !== recipeId);
       localStorage.setItem("allRecipes", JSON.stringify(allRecipes));
 
       let recipes = JSON.parse(localStorage.getItem("recipes")) || [];
-      recipes = recipes.filter(r => r.name !== nameToDelete);
+      recipes = recipes.filter(r => r.id !== recipeId);
       localStorage.setItem("recipes", JSON.stringify(recipes));
 
       let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-      favorites = favorites.filter(r => r.name !== nameToDelete);
+      favorites = favorites.filter(r => r.id !== recipeId);
       localStorage.setItem("favorites", JSON.stringify(favorites));
 
       loadRecipes();
     }
 
-    // EDIT button
     if (event.target.classList.contains("edit")) {
       const recipeId = parseInt(event.target.getAttribute("data-id"));
-      const allRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
+      const allRecipes = JSON.parse(localStorage.getItem("allRecipes")) || [];
 
       const selectedRecipe = allRecipes.find(r => r.id === recipeId);
       if (selectedRecipe) {
         localStorage.setItem("selectedRecipe", JSON.stringify(selectedRecipe));
-        window.location.href = "EditRecipe.html";
+        window.location.href = "EditRecipe.html?id=" + recipeId; // إضافة ID إلى URL
       } else {
         alert("Recipe not found!");
       }
