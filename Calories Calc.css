@@ -105,6 +105,24 @@ input {
     box-sizing: border-box;
 }
 
+#suggestions {
+    background: #FFF6F0;
+    border-radius: 5px;
+    text-align: left;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.suggestion {
+    padding: 10px;
+    cursor: pointer;
+}
+
+    .suggestion:hover {
+        background: #D35400;
+        color: white;
+    }
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -134,4 +152,7 @@ tfoot th {
     padding: 10px;
     border: 1px solid #ccc;
     text-align: left;
+}
+.hidden {
+    display: none;
 }
