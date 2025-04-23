@@ -145,3 +145,24 @@ nav img {
     margin: 5px 0;
     color: #666;
 }
+.search-again-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #D35400;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-again-btn:hover {
+    background-color: #A84300;
+}
+.not-found {
+    font-size: 22px;
+    color: #D35400;
+    margin-top: 20px;
+    font-weight: bold;
+}
