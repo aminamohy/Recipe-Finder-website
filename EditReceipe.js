@@ -1,42 +1,38 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const recipePhotoInput = document.getElementById("recipe-photo"); // File input for recipe image
-  const imagePreview = document.getElementById("image-preview"); // Image preview element
-  const ingredientsList = document.getElementById("ingredients-list"); // List of ingredients
-  const directionsList = document.getElementById("directions-list"); // List of directions
-  const recipeForm = document.getElementById("recipe-form"); // The form to save the updated recipe
+ 
+  const recipePhotoInput = document.getElementById("recipe-photo");
+  const imagePreview = document.getElementById("image-preview");
+  const ingredientsList = document.getElementById("ingredients-list");
+  const directionsList = document.getElementById("directions-list");
+  const recipeForm = document.getElementById("recipe-form");
 
-  // Fetch the stored recipe from localStorage
   let storedRecipe = JSON.parse(localStorage.getItem("selectedRecipe"));
 
   if (storedRecipe) {
-    // Fill inputs with stored recipe data
     document.getElementById("recipe-name").value = storedRecipe.name;
-    document.getElementById("duration").value = parseInt(storedRecipe.time);
+    document.getElementById("duration").value = parseInt(storedRecipe.time) || 30;
     document.getElementById("description").value = storedRecipe.description;
     document.getElementById("course").value = storedRecipe.courseName;
-   
 
-    // Fill ingredients
-    ingredientsList.innerHTML = ""; // Clear existing ingredients
+    ingredientsList.innerHTML = "";
     storedRecipe.ingredients.forEach(ingredient => {
+      const [quantity, unit] = parseQuantity(ingredient.quantity);
+      
       const ingredientDiv = document.createElement("div");
       ingredientDiv.classList.add("ingredient");
-
       ingredientDiv.innerHTML = `
-        <input type="text" placeholder="Quantity" value="${ingredient.quantity}" required>
+        <input type="text" placeholder="Quantity" value="${quantity}" required>
         <select>
-          <option ${ingredient.quantity.includes('gram') ? 'selected' : ''}>gram</option>
-          <option ${ingredient.quantity.includes('oz') ? 'selected' : ''}>oz</option>
-          <option ${ingredient.quantity.includes('cup') ? 'selected' : ''}>cup</option>
+          <option ${unit === 'gram' ? 'selected' : ''}>gram</option>
+          <option ${unit === 'oz' ? 'selected' : ''}>oz</option>
+          <option ${unit === 'cup' ? 'selected' : ''}>cup</option>
         </select>
         <input type="text" placeholder="Ingredient Name" value="${ingredient.name}" required>
         <button type="button" class="remove-btn"><i class="fas fa-times"></i></button>
       `;
-
       ingredientsList.appendChild(ingredientDiv);
     });
 
-    // Fill directions
     directionsList.innerHTML = "";
     storedRecipe.instructions.forEach(step => {
       const directionDiv = document.createElement("div");
@@ -48,28 +44,18 @@ document.addEventListener("DOMContentLoaded", function () {
       directionsList.appendChild(directionDiv);
     });
 
-    // Set the image preview from the stored recipe data if exists
     if (storedRecipe.image) {
       imagePreview.src = storedRecipe.image;
+      imagePreview.style.display = 'block';
     }
   }
 
-  // Event listener for file input change
-  recipePhotoInput.addEventListener("change", function (e) {
-    const file = e.target.files[0]; // Get the selected file
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (event) {
-        // Update the image preview with the new image
-        imagePreview.src = event.target.result;
-      };
-      reader.readAsDataURL(file); // Read the file as a data URL
-    }
-  });
+  function parseQuantity(quantity) {
+    const match = quantity.match(/(\d+)(\D*)/);
+    return match ? [match[1], match[2].trim()] : [quantity, ''];
+  }
 
-  // Add ingredient functionality
-  const addIngredientButton = document.querySelector(".add-btn"); // Add Ingredient button
-  addIngredientButton.addEventListener("click", function () {
+  document.querySelector(".add-btn").addEventListener("click", function () {
     const ingredientDiv = document.createElement("div");
     ingredientDiv.classList.add("ingredient");
     ingredientDiv.innerHTML = `
@@ -84,15 +70,12 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     ingredientsList.appendChild(ingredientDiv);
 
-    // Add event listener for the remove button of the new ingredient
     ingredientDiv.querySelector(".remove-btn").addEventListener("click", function () {
       ingredientsList.removeChild(ingredientDiv);
     });
   });
 
-  // Add step functionality
-  const addStepButton = document.getElementById("add-direction-btn"); // Add Step button
-  addStepButton.addEventListener("click", function () {
+  document.getElementById("add-direction-btn").addEventListener("click", function () {
     const directionDiv = document.createElement("div");
     directionDiv.classList.add("direction");
     directionDiv.innerHTML = `
@@ -101,50 +84,70 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     directionsList.appendChild(directionDiv);
 
-    // Add event listener for the remove button of the new step
     directionDiv.querySelector(".remove-btn").addEventListener("click", function () {
       directionsList.removeChild(directionDiv);
     });
   });
 
-  // Save updated recipe on form submission
+  recipePhotoInput.addEventListener("change", function (e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        imagePreview.src = event.target.result;
+        imagePreview.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
   recipeForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // Get new values from the form
     const updatedRecipe = {
       ...storedRecipe,
       name: document.getElementById("recipe-name").value,
       time: document.getElementById("duration").value + " min",
       description: document.getElementById("description").value,
       courseName: document.getElementById("course").value,
-      image: imagePreview.src, // Use the image preview's src for the updated image
+      image: imagePreview.src || storedRecipe.image || '',
       ingredients: Array.from(document.querySelectorAll("#ingredients-list .ingredient")).map(div => {
         const quantity = div.children[0].value;
         const unit = div.children[1].value;
         const name = div.children[2].value;
         return {
-          id: Math.random(), // generate a random ID
+          id: Math.random(),
           name,
-          quantity: quantity + unit
+          quantity: quantity + " " + unit
         };
       }),
       instructions: Array.from(document.querySelectorAll("#directions-list textarea")).map(textarea => textarea.value)
     };
 
-    // Update recipe in localStorage
-    let allRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
-    let index = allRecipes.findIndex(r => r.id === storedRecipe.id);
+    let recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+    const recipeIndex = recipes.findIndex(r => r.id === storedRecipe.id);
+    if (recipeIndex !== -1) {
+      recipes[recipeIndex] = updatedRecipe;
+    } else {
+      recipes.push(updatedRecipe);
+    }
+    localStorage.setItem("recipes", JSON.stringify(recipes));
 
-    if (index !== -1) {
-      allRecipes[index] = updatedRecipe;
+    let allRecipes = JSON.parse(localStorage.getItem("allRecipes")) || [];
+    const allIndex = allRecipes.findIndex(r => r.id === storedRecipe.id);
+    if (allIndex !== -1) {
+      allRecipes[allIndex] = updatedRecipe;
     } else {
       allRecipes.push(updatedRecipe);
     }
+    localStorage.setItem("allRecipes", JSON.stringify(allRecipes));
 
-    localStorage.setItem("recipes", JSON.stringify(allRecipes));
+    localStorage.setItem('recipeUpdated', JSON.stringify({
+      id: updatedRecipe.id,
+      timestamp: Date.now()
+    }));
 
     alert("Recipe updated successfully!");
-    window.location.href = "Recipe_List_Page.html"; 
+    window.location.href = "Recipe_List_Page.html";
   });
 });
