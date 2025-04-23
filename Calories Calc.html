@@ -23,49 +23,34 @@
             <a href="SearchPage.html">Find recipe</a>
             <a href="Admin.html">Manage recipes</a>
     </div>
-        <div class="about">
+        
+    <div class="about">
         <button><i class="fa-solid fa-user"></i>sign up</button>
         <button><i class="fa-solid fa-arrow-right"></i> login</button>
     </div>
     </nav>
     
-    <div class="container">
+       <div class="container">
         <h1>Meal Calories Calculator</h1>
-        <input list="meal" placeholder="Enter a meal..." autofocus>
-        <datalist id="meal">
-            <option value="burger">
-            <option value="pasta">
-            <option value="pizza">
-        </datalist>
+        <input type="text" id="meal" placeholder="Enter a meal" onkeyup="showSuggestions()">
+        <div id="suggestions"></div>
 
-        <table>
+        <table id="mealTable" class="hidden">
             <thead>
                 <tr>
                     <th>Ingredients</th>
                     <th>Calories</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th>pasta</th>
-                    <th>150</th>
-                </tr>
-                <tr>
-                    <th>sauce</th>
-                    <th>50</th>
-                </tr>
-                <tr>
-                    <th>cheese</th>
-                    <th>50</th>
-                </tr>
-            </tbody>
+            <tbody id="tableBody"></tbody>
             <tfoot>
                 <tr>
                     <th>Total Calories</th>
-                    <th>250</th>
+                    <th id="totalCalories">0</th>
                 </tr>
             </tfoot>
         </table>
     </div>
+    <script src="Calories calc js1.js"></script>
 </body>
 </html>
