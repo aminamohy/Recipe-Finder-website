@@ -48,73 +48,73 @@
             window.location.href = "Login.html";
         });
 
-        function loadRecipes() {
-            const recipeList = document.getElementById("recipeList");
-            let recipes = [];
+        // function loadRecipes() {
+        //     const recipeList = document.getElementById("recipeList");
+        //     let recipes = [];
             
-            try {
-                recipes = JSON.parse(localStorage.getItem("allRecipes")) || 
-                         JSON.parse(localStorage.getItem("recipes")) || [];
-            } catch (e) {
-                console.error("Error loading recipes:", e);
-            }
+        //     try {
+        //         recipes = JSON.parse(localStorage.getItem("allRecipes")) || 
+        //                  JSON.parse(localStorage.getItem("recipes")) || [];
+        //     } catch (e) {
+        //         console.error("Error loading recipes:", e);
+        //     }
             
-            recipeList.innerHTML = "";
+        //     recipeList.innerHTML = "";
 
-            if (recipes.length === 0) {
-                recipeList.innerHTML = '<p class="no-recipes">No recipes found. Add some recipes to see them here.</p>';
-                return;
-            }
+        //     if (recipes.length === 0) {
+        //         recipeList.innerHTML = '<p class="no-recipes">No recipes found. Add some recipes to see them here.</p>';
+        //         return;
+        //     }
 
-            recipes.forEach(recipe => {
-                const recipeCard = document.createElement("div");
-                recipeCard.className = "recipe-card";
-                recipeCard.dataset.id = recipe.id;
-                recipeCard.dataset.name = recipe.name;
-                recipeCard.dataset.course = recipe.courseName;
+        //     recipes.forEach(recipe => {
+        //         const recipeCard = document.createElement("div");
+        //         recipeCard.className = "recipe-card";
+        //         recipeCard.dataset.id = recipe.id;
+        //         recipeCard.dataset.name = recipe.name;
+        //         recipeCard.dataset.course = recipe.courseName;
 
-                let imageHtml = '';
-                try {
-                    imageHtml = `<img src="${recipe.image || 'imgs/default-recipe.jpg'}" alt="${recipe.name}" 
-                               onerror="this.src='imgs/default-recipe.jpg'">`;
-                } catch (e) {
-                    imageHtml = `<div class="image-placeholder">No Image</div>`;
-                }
+        //         let imageHtml = '';
+        //         try {
+        //             imageHtml = `<img src="${recipe.image || 'imgs/default-recipe.jpg'}" alt="${recipe.name}" 
+        //                        onerror="this.src='imgs/default-recipe.jpg'">`;
+        //         } catch (e) {
+        //             imageHtml = `<div class="image-placeholder">No Image</div>`;
+        //         }
 
-                recipeCard.innerHTML = `
-                    ${imageHtml}
-                    <h3>${recipe.name || 'Unnamed Recipe'}</h3>
-                    <p>${recipe.description || 'A delicious dish'}</p>
-                    <div class="buttons-container">
-                        <button class="favorite-btn"><i class="fa fa-heart"></i></button>
-                        <button class="recipe-details">View details</button>
-                    </div>
-                `;
+        //         recipeCard.innerHTML = `
+        //             ${imageHtml}
+        //             <h3>${recipe.name || 'Unnamed Recipe'}</h3>
+        //             <p>${recipe.description || 'A delicious dish'}</p>
+        //             <div class="buttons-container">
+        //                 <button class="favorite-btn"><i class="fa fa-heart"></i></button>
+        //                 <button class="recipe-details">View details</button>
+        //             </div>
+        //         `;
 
-                recipeCard.querySelector(".recipe-details").addEventListener("click", function() {
-                    window.location.href = `Recipe_details_Page.html?id=${recipe.id}`;
-                });
+        //         recipeCard.querySelector(".recipe-details").addEventListener("click", function() {
+        //             window.location.href = `Recipe_details_Page.html?id=${recipe.id}`;
+        //         });
 
-                recipeList.appendChild(recipeCard);
-            });
-        }
+        //         recipeList.appendChild(recipeCard);
+        //     });
+        // }
 
-        document.addEventListener("DOMContentLoaded", function() {
-            loadRecipes();
+        // document.addEventListener("DOMContentLoaded", function() {
+        //     loadRecipes();
             
-            window.addEventListener('storage', function(event) {
-                if (event.key === 'recipeUpdated') {
-                    console.log('Recipe update detected, reloading...');
-                    loadRecipes();
-                }
-            });
+        //     window.addEventListener('storage', function(event) {
+        //         if (event.key === 'recipeUpdated') {
+        //             console.log('Recipe update detected, reloading...');
+        //             loadRecipes();
+        //         }
+        //     });
 
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('updated')) {
-                console.log(`Recipe ${urlParams.get('updated')} was recently updated`);
+        //     const urlParams = new URLSearchParams(window.location.search);
+        //     if (urlParams.has('updated')) {
+        //         console.log(`Recipe ${urlParams.get('updated')} was recently updated`);
               
-            }
-        });
+        //     }
+        // });
     </script>
     <script src="recipe_list.js"></script>
 </body>
