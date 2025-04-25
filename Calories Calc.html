@@ -31,26 +31,27 @@
     </nav>
     
        <div class="container">
-        <h1>Meal Calories Calculator</h1>
-        <input type="text" id="meal" placeholder="Enter a meal" onkeyup="showSuggestions()">
-        <div id="suggestions"></div>
+     <h1>Meal Calories Calculator</h1>
+     <input type="text" id="meal" placeholder="Enter a meal..." onkeyup="showSuggestions()">
+     <div id="suggestions"></div>
 
-        <table id="mealTable" class="hidden">
-            <thead>
-                <tr>
-                    <th>Ingredients</th>
-                    <th>Calories</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody"></tbody>
-            <tfoot>
-                <tr>
-                    <th>Total Calories</th>
-                    <th id="totalCalories">0</th>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
+     <table id="mealTable" class="hidden">
+         <thead>
+             <tr>
+                 <th>Ingredient</th>
+                 <th>Quantity</th>
+                 <th>Estimated Calories</th>
+             </tr>
+         </thead>
+         <tbody id="tableBody"></tbody>
+         <tfoot>
+             <tr>
+                 <th colspan="2">Total Calories</th>
+                 <th id="totalCalories">0</th>
+             </tr>
+         </tfoot>
+     </table>
+ </div>
     <script src="calories calc js1.js"></script>
 </body>
 </html>
