@@ -1,48 +1,74 @@
+const recipes = JSON.parse(localStorage.getItem("allRecipes")) || [];
+const selectedRecipe = JSON.parse(localStorage.getItem("selectedRecipe"));
 
-const meals = {
-        "Pasta": { "Pasta": 200, "Tomato Sauce": 100, "Cheese": 150 },
-        "Burger": { "Bun": 150, "Beef Patty": 250, "Cheese": 100, "Lettuce": 10 },
-        "Salad": { "Lettuce": 15, "Tomato": 20, "Chicken": 200, "Dressing": 100 }
-        };
+const caloriesPerIngredient = {
+  "Chicken": 239, "Garlic Sauce": 100, "Pita Bread": 170,
+  "Spaghetti": 158, "Tomato Sauce": 29, "Ground Beef": 250,
+  "Fava Beans": 187, "Olive Oil": 119, "Lemon Juice": 4,
+  "Onion": 40, "Garlic": 5, "Cilantro leaves": 1, "Basil": 1,
+  "Ground Turkey": 135, "Taco Shell": 62, "Lettuce": 5,
+  "Eggs": 78, "Black Beans": 114, "Tortilla": 140,
+  "Beetroot": 43, "Carrot": 25, "Flour": 100
+};
 
-        function showSuggestions() {
-        const input = document.getElementById("meal").value.toLowerCase();
-        const suggestionsDiv = document.getElementById("suggestions");
+window.onload = function() {
+  if (selectedRecipe) {
+    document.getElementById("meal").value = selectedRecipe.name;
+    calculateCalories();
+  }
+};
+
+function showSuggestions() {
+  const input = document.getElementById("meal").value.toLowerCase();
+  const suggestionsDiv = document.getElementById("suggestions");
+  suggestionsDiv.innerHTML = "";
+
+  if (!input) return;
+
+  recipes.forEach(recipe => {
+    if (recipe.name.toLowerCase().includes(input)) {
+      const div = document.createElement("div");
+      div.className = "suggestion";
+      div.textContent = recipe.name;
+      div.onclick = () => {
+        document.getElementById("meal").value = recipe.name;
         suggestionsDiv.innerHTML = "";
+      };
+      suggestionsDiv.appendChild(div);
+    }
+  });
+}
 
-        if (input.length === 0) {
-        return;
-        }
+function calculateCalories() {
+  const input = document.getElementById("meal").value.trim().toLowerCase();
+  const recipe = recipes.find(r => r.name.toLowerCase() === input) || selectedRecipe;
+  const tableBody = document.getElementById("tableBody");
+  const totalCaloriesElem = document.getElementById("totalCalories");
 
-        for (let meal in meals) {
-        if (meal.toLowerCase().includes(input)) {
-        const suggestion = document.createElement("div");
-        suggestion.classList.add("suggestion");
-        suggestion.innerText = meal;
-        suggestion.onclick = () => selectMeal(meal);
-        suggestionsDiv.appendChild(suggestion);
-        }
-        }
-        }
+  if (!recipe) {
+    alert("Recipe not found.");
+    return;
+  }
 
-        function selectMeal(meal) {
-        document.getElementById("meal").value = meal;
-        document.getElementById("suggestions").innerHTML = "";
-        showMealTable(meal);
-        }
+  tableBody.innerHTML = "";
+  let totalCalories = 0;
 
-        function showMealTable(meal) {
-        const ingredients = meals[meal];
-        const tableBody = document.getElementById("tableBody");
-        tableBody.innerHTML = "";
+  recipe.ingredients.forEach(ing => {
+    const name = ing.name;
+    const quantity = ing.quantity;
+    const cal = caloriesPerIngredient[name] || 0;
 
-        let totalCalories = 0;
-        for (let ingredient in ingredients) {
-        let row = `<tr><td>${ingredient}</td><td>${ingredients[ingredient]}</td></tr>`;
-        tableBody.innerHTML += row;
-        totalCalories += ingredients[ingredient];
-        }
+    totalCalories += cal;
 
-        document.getElementById("totalCalories").innerText = totalCalories;
-        document.getElementById("mealTable").classList.remove("hidden");
-        }
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${name}</td>
+      <td>${quantity}</td>
+      <td>${cal}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+
+  totalCaloriesElem.textContent = totalCalories;
+  document.getElementById("mealTable");
+}
