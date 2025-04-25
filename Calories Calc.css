@@ -127,31 +127,21 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    font-size: 18px;
 }
 
-thead th {
-    background-color: #D35400;
-    color: white;
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-
-tbody tr th {
-    background-color: #F5EBDC;
-    color: #333;
+th, td {
     border: 1px solid #ccc;
     padding: 10px;
-    text-align: left;
 }
 
-tfoot th {
+th {
     background-color: #D35400;
     color: white;
+}
+
+tfoot {
+    background-color: #FFF6F0;
     font-weight: bold;
-    padding: 10px;
-    border: 1px solid #ccc;
-    text-align: left;
 }
 .hidden {
     display: none;
